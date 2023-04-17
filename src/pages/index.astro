@@ -5,7 +5,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
+import Features_cards from '~/components/widgets/Features_cards.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Content from '~/components/widgets/Content.astro';
 import LatestPosts from '~/components/blog/LatestPosts.astro';
@@ -22,34 +22,53 @@ const meta = {
 
 <Layout {meta}>
   <!-- Hero Widget ******************* -->
-
+<!-- 
   <Hero
-    callToAction={{ text: 'Get template', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
+  callToAction={{ text: 'Get template', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
     callToAction2={{ text: 'Learn more', href: '#features' }}
-    image={{ src: import('~/assets/images/hero.png'), alt: 'AstroWind Hero Image' }}
+ -->
+  <Hero  
+    image={{ src: import('~/assets/images/me/cropped-Bild-03.jpg'), alt: 'Dr. Mukherjee' }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden lg:inline">create your website <br class="2xl:hidden"/> with</span>
-      <span class="text-accent dark:text-white highlight"> Astro 2.0</span> + Tailwind CSS
+      <span class="dark:text-gray-400">
+        <span class="text-4xl"> Dr.<span class="hidden md:inline">-Ing.</span> </span><span class="hidden lg:inline">Patrick </span>
+      </span>
+      <span class="text-accent dark:text-white highlight">Mukherjee</span>
     </Fragment>
 
-    <Fragment slot="subtitle">
+    <!--Fragment slot="subtitle">
       <span class="hidden sm:inline">
         <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 2.0 +
-        Tailwind CSS.</span
-      >
+        Tailwind CSS.</span>
       <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span> Suitable for Startups,
       Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs.
-    </Fragment>
+    </Fragment-->
   </Hero>
+
+   <!-- HighlightedPosts Widget ******* -->
+
+  <LatestPosts
+    title="Some thoughts ..."
+    information={`The blog is used to display AstroWind documentation.
+			Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
+			Astro is a very interesting technology. Thanks.
+		`}
+    postIds={[
+      'get-started-website-with-astro-tailwind-css.md',
+      'how-to-customize-astrowind-to-your-brand.md',
+      'useful-resources-to-create-websites.md',
+      'astrowind-template-in-depth.md',
+    ]}
+  />
 
   <!-- Note Widget ******************* -->
 
-  <Note />
+  <!-- <Note /> -->
 
   <!-- Features Widget *************** -->
 
-  <Features
+  <!-- Features
     highlight="Features"
     title="What you get with AstroWind"
     subtitle="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa quae."
@@ -95,7 +114,7 @@ const meta = {
         },
       ],
     ]}
-  />
+  /-->
 
   <!-- Content Widget **************** -->
 
@@ -198,7 +217,7 @@ const meta = {
 
   <!-- Features2 Widget ************** -->
 
-  <Features2
+  <Features_cards
     title="Most used widgets"
     subtitle="Provides frequently used components for building websites using Tailwind CSS"
     highlight="Components"
@@ -257,22 +276,6 @@ const meta = {
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
         icon: 'icon-park:page-template',
       },
-    ]}
-  />
-
-  <!-- HighlightedPosts Widget ******* -->
-
-  <LatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-			Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-			Astro is a very interesting technology. Thanks.
-		`}
-    postIds={[
-      'get-started-website-with-astro-tailwind-css.md',
-      'how-to-customize-astrowind-to-your-brand.md',
-      'useful-resources-to-create-websites.md',
-      'astrowind-template-in-depth.md',
     ]}
   />
 

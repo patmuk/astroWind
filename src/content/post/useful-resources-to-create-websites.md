@@ -7,6 +7,9 @@ tags:
   - front-end
   - tools
   - resources
+author:
+  displayname: 'test'
+
 ---
 
 ## Magna nunc senectus torquent per fusce sapien ligula tempus cra

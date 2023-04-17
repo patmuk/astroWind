@@ -14,7 +14,13 @@ const post = defineCollection({
     excerpt: z.string().optional(),
     category: z.string().optional(),
     tags: z.array(z.string()).optional(),
-    author: z.string().optional(),
+    author: z.object({
+      email: z.string().email().optional(),
+      display_name: z.string().optional(),
+      first_name: z.string().optional(),
+      last_name: z.string().optional(),
+      titel: z.string().optional(),
+    }),
   }),
 });
 

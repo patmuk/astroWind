@@ -10,9 +10,11 @@ import { SITE } from '~/config.mjs';
 export interface Props {
   meta?: MetaSEO;
 }
+import { getLangFromUrl } from '~/utils/i18n/i18n_utils';
+const language = getLangFromUrl(Astro.url);
 
 const { meta = {} } = Astro.props;
-const { language = 'en', textDirection = 'ltr' } = SITE;
+const textDirection = 'ltr';
 ---
 
 <!DOCTYPE html>

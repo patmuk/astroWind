@@ -1,26 +1,32 @@
 ---
-import { languages, defaultLang } from '~/utils/i18n/translations';
-
-const supportedLanguages = Object.keys(languages);
-
-function getPreferredLanguage() {
-  if (typeof navigator === 'undefined') {
-    // We're in SSG mode
-    return defaultLang;
-  }
-
-  const languageCodes = navigator.languages || [navigator.language];
-  for (const code of languageCodes) {
-    const language = code.toLowerCase().split(/[_-]+/)[0];
-    if (supportedLanguages.includes(language)) {
-      return language;
-    }
-  }
-  return defaultLang;
-}
-
-const preferredLanguage = getPreferredLanguage();
 ---
 
-<!-- redirects to the user's preferred language in SSR mode -->
-<meta http-equiv="refresh" content={`0;url=/${preferredLanguage}`} />
+<astro>
+  <script>
+    import { languages, defaultLang } from '~/utils/i18n/translations';
+
+    const supportedLanguages = Object.keys(languages);
+    console.log(`supported languages: ${supportedLanguages}`);
+
+    function getPreferredLanguage() {
+      const languageCodes = navigator.languages || [navigator.language];
+
+      for (const code of languageCodes) {
+        const language = code.toLowerCase().split(/[_-]+/)[0];
+        if (supportedLanguages.includes(language)) {
+          console.log(`user prefered language is: ${language}`);
+          return language;
+        }
+      }
+      console.log(`none of the user's languages are supported, defaulting to: ${defaultLang}`);
+      return defaultLang;
+    }
+
+    const preferredLanguage = getPreferredLanguage();
+
+    const url = `/${preferredLanguage}`;
+    console.log(`redirecting to ${url}`);
+    window.location.replace(url);
+
+  </script>
+</astro>

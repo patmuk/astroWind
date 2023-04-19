@@ -1,0 +1,36 @@
+---
+import Layout from '~/layouts/BaseLayout.astro';
+import { getHomePermalink } from '~/utils/permalinks';
+
+const title = `Error 404`;
+
+import { languages } from '~/utils/i18n/translations';
+
+export async function getStaticPaths() {
+  const langs = Object.keys(languages);
+  return langs.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+---
+
+<Layout meta={{ title }}>
+  <section class="flex h-full items-center p-16">
+    <div class="container mx-auto my-8 flex flex-col items-center justify-center px-5">
+      <div class="max-w-md text-center">
+        <h2 class="mb-8 text-9xl font-bold">
+          <span class="sr-only">Error</span>
+          <span class="text-primary">404</span>
+        </h2>
+        <p class="text-3xl font-semibold md:text-3xl">
+          <div class="@if ($lang != 'en') @endif hidden">Sorry, we couldn't find this page.</div>
+          <div class="@if ($lang != 'de') @endif hidden">Leider existiert diese Seite nicht.</div>
+        </p>
+      </div>
+      <p class="text-muted mb-8 mt-4 text-lg dark:text-slate-400">
+        But dont worry, you can find plenty of other things on our homepage.
+      </p>
+      <a rel="noopener noreferrer" href={getHomePermalink(lang)} class="btn ml-4">Back to homepage</a>
+    </div>
+  </section>
+</Layout>

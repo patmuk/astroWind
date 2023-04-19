@@ -1,32 +1,10 @@
 ---
+
 ---
 
 <astro>
   <script>
-    import { languages, defaultLang } from '~/utils/i18n/translations';
-
-    const supportedLanguages = Object.keys(languages);
-    console.log(`supported languages: ${supportedLanguages}`);
-
-    function getPreferredLanguage() {
-      const languageCodes = navigator.languages || [navigator.language];
-
-      for (const code of languageCodes) {
-        const language = code.toLowerCase().split(/[_-]+/)[0];
-        if (supportedLanguages.includes(language)) {
-          console.log(`user prefered language is: ${language}`);
-          return language;
-        }
-      }
-      console.log(`none of the user's languages are supported, defaulting to: ${defaultLang}`);
-      return defaultLang;
-    }
-
-    const preferredLanguage = getPreferredLanguage();
-
-    const url = `/${preferredLanguage}`;
-    console.log(`redirecting to ${url}`);
-    window.location.replace(url);
-
+    import { redirect_to_i18n} from '~/utils/i18n/i18n_utils';
+    redirect_to_i18n();
   </script>
 </astro>

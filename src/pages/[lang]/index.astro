@@ -29,8 +29,6 @@ export async function getStaticPaths() {
   const langs = Object.keys(languages);
   return langs.map((lang) => ({ params: { lang } }));
 }
-
-// const { lang } = Astro.params;
 ---
 
 <Layout {meta}>

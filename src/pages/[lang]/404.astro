@@ -1,6 +1,7 @@
 ---
 import Layout from '~/layouts/BaseLayout.astro';
 import { getHomePermalink } from '~/utils/permalinks';
+import { getLangFromUrl, useTranslations } from '~/utils/i18n/i18n_utils';
 
 const title = `Error 404`;
 
@@ -11,26 +12,25 @@ export async function getStaticPaths() {
   return langs.map((lang) => ({ params: { lang } }));
 }
 
-const { lang } = Astro.params;
+const language = getLangFromUrl(Astro.url);
+const t = useTranslations(language);
+
 ---
 
 <Layout meta={{ title }}>
-  <section class="flex h-full items-center p-16">
-    <div class="container mx-auto my-8 flex flex-col items-center justify-center px-5">
+  <section class="flex items-center h-full p-16">
+    <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">
       <div class="max-w-md text-center">
-        <h2 class="mb-8 text-9xl font-bold">
+        <h2 class="mb-8 font-bold text-9xl">
           <span class="sr-only">Error</span>
           <span class="text-primary">404</span>
         </h2>
-        <p class="text-3xl font-semibold md:text-3xl">
-          <div class="@if ($lang != 'en') @endif hidden">Sorry, we couldn't find this page.</div>
-          <div class="@if ($lang != 'de') @endif hidden">Leider existiert diese Seite nicht.</div>
+        <p class="text-3xl font-semibold md:text-3xl">{t('404.sorry')}</p>
+        <p class="mt-4 mb-8 text-lg text-muted dark:text-slate-400">
+          {t('404.hint')}
         </p>
+        <a rel="noopener noreferrer" href={getHomePermalink(language)} class="btn ml-4">{t('404.homelink')}</a>
       </div>
-      <p class="text-muted mb-8 mt-4 text-lg dark:text-slate-400">
-        But dont worry, you can find plenty of other things on our homepage.
-      </p>
-      <a rel="noopener noreferrer" href={getHomePermalink(lang)} class="btn ml-4">Back to homepage</a>
     </div>
   </section>
 </Layout>

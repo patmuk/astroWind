@@ -61,11 +61,11 @@ export const headerData = {
     { type: 'button', text: 'Download', href: 'https://github.com/onwidget/astrowind' }
   ],
 };
-  
+
 export const footerData = {
   links: [
     {
-      title: 'Product',
+      text: 'Product',
       links: [
         { text: 'Features', href: '#' },
         { text: 'Security', href: '#' },
@@ -77,7 +77,7 @@ export const footerData = {
       ],
     },
     {
-      title: 'Platform',
+      text: 'Platform',
       links: [
         { text: 'Developer API', href: '#' },
         { text: 'Partners', href: '#' },
@@ -87,7 +87,7 @@ export const footerData = {
       ],
     },
     {
-      title: 'Support',
+      text: 'Support',
       links: [
         { text: 'Docs', href: '#' },
         { text: 'Community Forum', href: '#' },
@@ -97,7 +97,7 @@ export const footerData = {
       ],
     },
     {
-      title: 'Company',
+      text: 'Company',
       links: [
         { text: 'About', href: '#' },
         { text: 'Blog', href: '#' },

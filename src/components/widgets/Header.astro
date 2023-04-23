@@ -7,7 +7,7 @@ import ToggleMenu from '~/components/common/ToggleMenu.astro';
 import { getAsset, getHomePermalink } from '~/utils/permalinks';
 import LanguagePicker from './LanguagePicker.astro';
 
-import { getLangFromUrl } from '~/utils/i18n/i18n_utils';
+import { getLangFromUrl, useTranslations } from '~/utils/i18n/i18n_utils';
 
 interface Link {
   text?: string;
@@ -43,6 +43,9 @@ const {
 } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+
 ---
 
 <header

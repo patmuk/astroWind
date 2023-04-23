@@ -2,13 +2,18 @@ import { languages, ui, defaultLang } from './translations';
 
 export function getLangFromUrl(url: URL) {
     const [, lang] = url.pathname.split('/');
-    if (lang in ui) return lang as keyof typeof ui;
+    if (lang in languages) return lang as keyof typeof languages;
     return defaultLang;
 }
 
-export function useTranslations(lang: keyof typeof ui) {
-    return function t(key: keyof typeof ui[typeof defaultLang]) {
-        return ui[lang][key] || ui[defaultLang][key];
+// export function useTranslations(lang: keyof typeof ui) {
+//     return function t(key: keyof typeof ui[typeof defaultLang]) {
+//         return ui[lang][key] || ui[defaultLang][key];
+//     }
+// }
+export function useTranslations(lang: keyof typeof languages) {
+    return function t(key: keyof typeof languages) {
+        return ui[key][lang] || ui[key][defaultLang];
     }
 }
 

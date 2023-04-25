@@ -7,25 +7,12 @@ import ToggleMenu from '~/components/common/ToggleMenu.astro';
 import { getAsset, getHomePermalink } from '~/utils/permalinks';
 import LanguagePicker from './LanguagePicker.astro';
 
-import { getLangFromUrl, useTranslations } from '~/utils/i18n/i18n_utils';
+import { getLangFromUrl } from '~/utils/i18n/i18n_utils';
+import { defaultLang, Link, LinkMenu, isLinkMenu, ActionLink, ActionType } from '~/utils/i18n/translations';
 
-interface Link {
-  text?: string;
-  href?: string;
-  ariaLabel?: string;
-  icon?: string;
-}
-
-interface ActionLink extends Link {
-  type?: string;
-}
-
-interface MenuLink extends Link {
-  links?: Array<Link>;
-}
 
 export interface Props {
-  links?: Array<MenuLink>;
+  links?: Array<LinkMenu|Link>;
   actions?: Array<ActionLink>;
   isSticky?: boolean;
   showToggleTheme?: boolean;
@@ -43,8 +30,6 @@ const {
 } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
-
 
 ---
 
@@ -76,21 +61,20 @@ const t = useTranslations(lang);
     >
       <ul class="flex w-full flex-col pt-8 text-xl md:w-auto md:flex-row md:self-center md:pt-0 md:text-base">
         {
-          links.map(({ text, href, links }) => (
-            <li class={links?.length ? 'dropdown' : ''}>
-              {links?.length ? (
+          links.map( ( entry ) => (
+            <li class={isLinkMenu(entry) ? 'dropdown' : ''}>
+              {isLinkMenu(entry) ?  (
                 <>
                   <button class="flex items-center px-4 py-3 font-medium transition duration-150 ease-in-out hover:text-gray-900 dark:hover:text-white">
-                    {text} <Icon name="tabler:chevron-down" class="ml-0.5 hidden h-3.5 w-3.5 md:inline" />
+                    {entry[lang]??=entry[defaultLang]} <Icon name="tabler:chevron-down" class="ml-0.5 hidden h-3.5 w-3.5 md:inline" />
                   </button>
                   <ul class="dropdown-menu dark:md:bg-dark rounded pl-4 font-medium drop-shadow-xl md:absolute md:hidden md:min-w-[200px] md:bg-white/90 md:pl-0 md:backdrop-blur-md">
-                    {links.map(({ text: text2, href: href2 }) => (
+                    {entry.links.map(( link ) => (
                       <li>
                         <a
                           class="whitespace-no-wrap block px-5 py-2 first:rounded-t last:rounded-b dark:hover:bg-gray-700 md:hover:bg-gray-200"
-                          href={href2}
-                        >
-                          {text2}
+                          href={(link[lang] ??=link[defaultLang]).href}>
+                          {(link[lang] ??=link[defaultLang]).text}
                         </a>
                       </li>
                     ))}
@@ -99,10 +83,8 @@ const t = useTranslations(lang);
               ) : (
                 <a
                   class="flex items-center px-4 py-3 font-medium transition duration-150 ease-in-out hover:text-gray-900 dark:hover:text-white"
-                  href={href}
-                >
-                  {text}
-                </a>
+                  href={(entry[lang] ??= entry[defaultLang]).href}>
+                  {(entry[lang] ??=entry[defaultLang]).text}</a>
               )}
             </li>
           ))
@@ -127,15 +109,15 @@ const t = useTranslations(lang);
         {
           actions?.length ? (
             <span class="ml-4">
-              {actions.map(({ text, href, type }) => (
+              {actions.map(({ action, link }) => (
                 <a
                   class:list={[
                     'btn ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm',
-                    { 'btn-ghost': type === 'ghost', 'btn-primary': type === 'primary' },
+                    { 'btn-ghost': action === ActionType.GhostButton, 'btn-primary': action === ActionType.PrimaryButton },
                   ]}
-                  href={href}
+                  href={(link[lang] ??=link[defaultLang]).href}
                 >
-                  <Fragment set:html={text} />
+                  <Fragment set:html={(link[lang] ??=link[defaultLang]).text} />
                 </a>
               ))}
             </span>

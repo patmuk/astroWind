@@ -1,3 +1,5 @@
+import { getPermalink } from "../permalinks";
+
 export const languages = {
     en: { label: 'English', icon: 'cif:gb' },
     de: { label: 'Deutsch', icon: 'cif:de' },
@@ -5,7 +7,14 @@ export const languages = {
 
 export const defaultLang = 'en';
 
-export const ui = {
+interface Translation {
+    [key: string]: {
+        en: string;
+        de?: string;
+    };
+}
+
+export const ui: Translation = {
 
     '404.sorry': {
         en: "Sorry, we couldn't find this page.",
@@ -38,53 +47,160 @@ export const ui = {
 } as const;
 
 
-// interface Link {
-//     text?: string;
-//     href?: string;
-//     ariaLabel?: string;
-//     icon?: string;
-// }
+export interface Link {
+    [language: string]: {
+        text: string;
+        href: string;
+    }
+}
 
-// interface ActionLink extends Link {
-//     type?: string;
-// }
+export enum ActionType {
+    Button = 'button',
+    PrimaryButton = 'primary',
+    GhostButton = 'ghost',
+}
 
-// interface MenuLink extends Link {
-//     links?: Array<Link>;
-// }
+export interface ActionLink {
+    action: ActionType;
+    link: Link;
+}
 
-// export const navigation = {
-//         text: {
-//         en: {
-//             'nav.pages': 'Paages',
+export interface LinkMenu {
+    en: string;
+    de?: string;
+    links: Array<Link>;
+}
 
-//             links: [
-//                 {
-//                     text: 'Features',
-//                     href: '#',
-//                 },
-//                 {
-//                     text: 'Pricing',
-//                     href: '#',
-//                 },
-//                 {
-//                     text: 'About us',
-//                     href: '#',
-//                 },
-//                 {
-//                     text: 'Contact',
-//                     href: '#',
-//                 },
-//                 {
-//                     text: 'Terms',
-//                     href: getPermalink('/terms'),
-//                 },
-//                 {
-//                     text: 'Privacy policy',
-//                     href: getPermalink('/privacy'),
-//                 },
-//             ],
-//         },
+export function isLink(entry: any): entry is Link {
+    return typeof entry.language.href === 'string'
+}
+
+export function isLinkMenu(entry: any): entry is LinkMenu {
+    return typeof entry === 'object' && entry !== null && 'links' in entry;
+}
+
+const links: Array<Link | LinkMenu> =
+    [
+        {
+            en: 'Pages',
+            de: 'Seiten',
+            links: [
+                {
+                    en: {
+                        text: 'Features',
+                        href: '#'
+                    },
+                    de: {
+                        text: 'Features',
+                        href: '#'
+                    },
+                },
+                {
+                    en: {
+                        text: 'About me',
+                        href: '#about_me',
+                    },
+                    de: {
+                        text: 'über mich',
+                        href: '#ueber_mich',
+                    }
+                },
+                {
+                    en: {
+                        text: 'Contact',
+                        href: '#',
+                    },
+                    de: {
+                        text: 'Kontact',
+                        href: '#',
+                    }
+                },
+                {
+                    en: {
+                        text: 'Terms',
+                        href: getPermalink('/terms'),
+                    },
+                    de: {
+                        text: 'Nutzungsbedingungen',
+                        href: getPermalink('/terms'),
+                    },
+                },
+                {
+                    en: {
+                        text: 'Privacy policy',
+                        href: getPermalink('/privacy')
+                    },
+                    de: {
+                        text: 'Privacy policy',
+                        href: getPermalink('/privacy'),
+                    },
+                }
+            ],
+        },
+        {
+            en: 'second Menu',
+            // de: 'Zweites Menu',
+            links: [
+                {
+                    en: {
+                        text: 'Test Entry',
+                        href: '#'
+                    },
+                    de: {
+                        text: 'Test Eintrag',
+                        href: '#'
+                    },
+                },
+                {
+                    en: {
+                        text: 'further test entry',
+                        href: '#',
+                    },
+                    de: {
+                        text: 'weiterer Testeintrag',
+                        href: '#',
+                    }
+                },
+            ],
+        },
+        {
+            en: {
+                text: 'direct link',
+                href: '#',
+            },
+            de: {
+                text: 'direkter Link',
+                href: '#',
+            }
+        }
+    ]
+const actions: Array<ActionLink> =
+    [
+        {
+            action: ActionType.Button,
+            link: {
+                en: {
+                    text: 'Download',
+                    href: 'https://github.com/onwidget/astrowind'
+                },
+                de: {
+                    text: 'herunterladen',
+                    href: 'https://github.com/onwidget/astrowind'
+                }
+            }
+        }
+
+    ]
+
+export const headerNavigation: {
+    links: Array<Link | LinkMenu>;
+    actions: Array<ActionLink>;
+} = {
+    links,
+    actions,
+};
+
+
 //         {
 //             text: 'Widgets',
 //             href: '#',

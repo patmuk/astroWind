@@ -1,9 +1,10 @@
-import { getPermalink } from "../permalinks";
+import { getPermalink, getBlogPermalink, getAsset } from "../permalinks";
 
 export const languages = {
     en: { label: 'English', icon: 'cif:gb' },
     de: { label: 'Deutsch', icon: 'cif:de' },
 };
+
 
 export const defaultLang = 'en';
 
@@ -54,6 +55,11 @@ export interface Link {
     }
 }
 
+export interface IconLink {
+    icon: string;
+    link: Link;
+}
+
 export enum ActionType {
     Button = 'button',
     PrimaryButton = 'primary',
@@ -86,54 +92,24 @@ const links: Array<Link | LinkMenu> =
             de: 'Seiten',
             links: [
                 {
-                    en: {
-                        text: 'Features',
-                        href: '#'
-                    },
-                    de: {
-                        text: 'Features',
-                        href: '#'
-                    },
+                    en: { text: 'Features', href: '#' },
+                    de: { text: 'Features', href: '#' },
                 },
                 {
-                    en: {
-                        text: 'About me',
-                        href: '#about_me',
-                    },
-                    de: {
-                        text: 'über mich',
-                        href: '#ueber_mich',
-                    }
+                    en: { text: 'About me', href: '#about_me', },
+                    de: { text: 'über mich', href: '#ueber_mich', }
                 },
                 {
-                    en: {
-                        text: 'Contact',
-                        href: '#',
-                    },
-                    de: {
-                        text: 'Kontact',
-                        href: '#',
-                    }
+                    en: { text: 'Contact', href: '#', },
+                    de: { text: 'Kontact', href: '#', }
                 },
                 {
-                    en: {
-                        text: 'Terms',
-                        href: getPermalink('/terms'),
-                    },
-                    de: {
-                        text: 'Nutzungsbedingungen',
-                        href: getPermalink('/terms'),
-                    },
+                    en: { text: 'Terms', href: getPermalink('/terms'), },
+                    de: { text: 'Nutzungsbedingungen', href: getPermalink('/terms'), },
                 },
                 {
-                    en: {
-                        text: 'Privacy policy',
-                        href: getPermalink('/privacy')
-                    },
-                    de: {
-                        text: 'Privacy policy',
-                        href: getPermalink('/privacy'),
-                    },
+                    en: { text: 'Privacy policy', href: getPermalink('/privacy') },
+                    de: { text: 'Privacy policy', href: getPermalink('/privacy'), },
                 }
             ],
         },
@@ -142,36 +118,22 @@ const links: Array<Link | LinkMenu> =
             // de: 'Zweites Menu',
             links: [
                 {
-                    en: {
-                        text: 'Test Entry',
-                        href: '#'
-                    },
-                    de: {
-                        text: 'Test Eintrag',
-                        href: '#'
-                    },
+                    en: { text: 'Test Entry', href: '#' },
+                    de: { text: 'Test Eintrag', href: '#' },
                 },
                 {
-                    en: {
-                        text: 'further test entry',
-                        href: '#',
-                    },
-                    de: {
-                        text: 'weiterer Testeintrag',
-                        href: '#',
-                    }
+                    en: { text: 'further test entry', href: '#', },
+                    de: { text: 'weiterer Testeintrag', href: '#', }
                 },
             ],
         },
         {
-            en: {
-                text: 'direct link',
-                href: '#',
-            },
-            de: {
-                text: 'direkter Link',
-                href: '#',
-            }
+            en:
+                { text: 'Blog', href: getBlogPermalink(), },
+        },
+        {
+            en: { text: 'direct link', href: '#', },
+            de: { text: 'direkter Link', href: '#', }
         }
     ]
 const actions: Array<ActionLink> =
@@ -179,17 +141,10 @@ const actions: Array<ActionLink> =
         {
             action: ActionType.Button,
             link: {
-                en: {
-                    text: 'Download',
-                    href: 'https://github.com/onwidget/astrowind'
-                },
-                de: {
-                    text: 'herunterladen',
-                    href: 'https://github.com/onwidget/astrowind'
-                }
+                en: { text: 'Download', href: 'https://github.com/onwidget/astrowind' },
+                de: { text: 'herunterladen', href: 'https://github.com/onwidget/astrowind' }
             }
         }
-
     ]
 
 export const headerNavigation: {
@@ -200,81 +155,101 @@ export const headerNavigation: {
     actions,
 };
 
+export interface FooterNavigation {
+    links: Array<LinkMenu>;
+    secondaryLinks: LinkMenu;
+    socialLinks: Array<IconLink>;
+    footNote: string;
+}
 
-//         {
-//             text: 'Widgets',
-//             href: '#',
-//         },
-//         {
-//             text: 'Blog',
-//             href: getBlogPermalink(),
-//         },
-//     ],
-//     actions: [
-//         { type: 'button', text: 'Download', href: 'https://github.com/onwidget/astrowind' }
-//     ],
-// };
-
-// export const footerData = {
-//     links: [
-//         {
-//             text: 'Product',
-//             links: [
-//                 { text: 'Features', href: '#' },
-//                 { text: 'Security', href: '#' },
-//                 { text: 'Team', href: '#' },
-//                 { text: 'Enterprise', href: '#' },
-//                 { text: 'Customer stories', href: '#' },
-//                 { text: 'Pricing', href: '#' },
-//                 { text: 'Resources', href: '#' },
-//             ],
-//         },
-//         {
-//             text: 'Platform',
-//             links: [
-//                 { text: 'Developer API', href: '#' },
-//                 { text: 'Partners', href: '#' },
-//                 { text: 'Atom', href: '#' },
-//                 { text: 'Electron', href: '#' },
-//                 { text: 'AstroWind Desktop', href: '#' },
-//             ],
-//         },
-//         {
-//             text: 'Support',
-//             links: [
-//                 { text: 'Docs', href: '#' },
-//                 { text: 'Community Forum', href: '#' },
-//                 { text: 'Professional Services', href: '#' },
-//                 { text: 'Skills', href: '#' },
-//                 { text: 'Status', href: '#' },
-//             ],
-//         },
-//         {
-//             text: 'Company',
-//             links: [
-//                 { text: 'About', href: '#' },
-//                 { text: 'Blog', href: '#' },
-//                 { text: 'Careers', href: '#' },
-//                 { text: 'Press', href: '#' },
-//                 { text: 'Inclusion', href: '#' },
-//                 { text: 'Social Impact', href: '#' },
-//                 { text: 'Shop', href: '#' },
-//             ],
-//         },
-//     ],
-//     secondaryLinks: [
-//         { text: 'Terms', href: getPermalink('/terms') },
-//         { text: 'Privacy Policy', href: getPermalink('/privacy') },
-//     ],
-//     socialLinks: [
-//         { ariaLabel: 'Twitter', icon: 'tabler:brand-twitter', href: '#' },
-//         { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-//         { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
-//         { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
-//         { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
-//     ],
-//     footNote: `
-//     <span class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 float-left rounded-sm bg-[url(https://onwidget.com/favicon/favicon-32x32.png)]"></span>
-//     Made by <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://onwidget.com/"> onWidget</a> · All rights reserved.
-//   `,
-// };
+export const footerNavigation: FooterNavigation = {
+    links: [
+        {
+            en: 'Product',
+            links: [
+                {
+                    en: { text: 'Features', href: '#' },
+                },
+                {
+                    en: { text: 'Security', href: '#' },
+                },
+                {
+                    en: { text: 'Team', href: '#' },
+                },
+                {
+                    en: { text: 'Enterprise', href: '#' },
+                },
+                {
+                    en: { text: 'Customer stories', href: '#' },
+                },
+                {
+                    en: { text: 'Pricing', href: '#' },
+                },
+                {
+                    en: { text: 'Resources', href: '#' },
+                },
+            ],
+        },
+        {
+            en: 'Platform',
+            links: [
+                {
+                    en: { text: 'Developer API', href: '#' },
+                },
+                {
+                    en: { text: 'Partners', href: '#' },
+                },
+                {
+                    en: { text: 'Atom', href: '#' },
+                },
+                {
+                    en: { text: 'Electron', href: '#' },
+                },
+                {
+                    en: { text: 'AstroWind Desktop', href: '#' },
+                },
+            ],
+        },
+        {
+            en: 'Support',
+            links: [
+                { en: { text: 'Docs', href: '#' }, },
+                { en: { text: 'Community Forum', href: '#' }, },
+                { en: { text: 'Professional Services', href: '#' }, },
+                { en: { text: 'Skills', href: '#' }, },
+                { en: { text: 'Status', href: '#' }, },
+            ],
+        },
+        {
+            en: 'Company',
+            links: [
+                { en: { text: 'About', href: '#' }, },
+                { en: { text: 'Blog', href: '#' }, },
+                { en: { text: 'Careers', href: '#' }, },
+                { en: { text: 'Press', href: '#' }, },
+                { en: { text: 'Inclusion', href: '#' }, },
+                { en: { text: 'Social Impact', href: '#' }, },
+                { en: { text: 'Shop', href: '#' }, },
+            ],
+        },
+    ],
+    secondaryLinks: {
+        en: 'HIER',
+        links: [
+            { en: { text: 'Terms', href: getPermalink('/terms') }, },
+            { en: { text: 'Privacy Policy', href: getPermalink('/privacy') }, },
+        ],
+    },
+    socialLinks:
+        [
+            { icon: 'tabler:brand-twitter', link: { en: { text: 'Twitter', href: '#' }, }, },
+            { icon: 'tabler:brand-instagram', link: { en: { text: 'Instagram', href: '#' }, }, },
+            { icon: 'tabler:brand-facebook', link: { en: { text: 'Facebook', href: '#' }, }, },
+            { icon: 'tabler:rss', link: { en: { text: 'RSS', href: getAsset('/rss.xml') }, }, },
+            { icon: 'tabler:brand-github', link: { en: { text: 'Github', href: 'https://github.com/onwidget/astrowind' }, }, },
+        ],
+    footNote: `
+        <span class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 float-left rounded-sm bg-[url(https://onwidget.com/favicon/favicon-32x32.png)]"></span>
+        Made by <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://onwidget.com/"> onWidget</a> · All rights reserved.
+      `,
+};

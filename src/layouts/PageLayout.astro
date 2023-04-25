@@ -4,8 +4,7 @@ import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
 // import Announcement from '~/components/widgets/Announcement.astro';
 
-import { footerData } from '~/data';
-import { headerNavigation } from '~/utils/i18n/translations'
+import { headerNavigation, footerNavigation } from '~/utils/i18n/translations'
 
 import { MetaSEO } from '~/types';
 
@@ -29,6 +28,6 @@ const { meta } = Astro.props;
     <slot />
   </main>
   <slot name="footer">
-    <Footer {...footerData} />
+    <Footer {footerNavigation} />
   </slot>
 </Layout>

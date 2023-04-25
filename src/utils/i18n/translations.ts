@@ -84,6 +84,16 @@ export function isLink(entry: any): entry is Link {
 export function isLinkMenu(entry: any): entry is LinkMenu {
     return typeof entry === 'object' && entry !== null && 'links' in entry;
 }
+const terms = {
+    en: { text: 'Terms', href: getPermalink('/terms'), },
+    de: { text: 'Nutzungsbedingungen', href: getPermalink('/terms'), },
+}
+const privacy_policy = {
+    en: { text: 'Privacy policy', href: getPermalink('/privacy') },
+    de: { text: 'Privacy policy', href: getPermalink('/privacy'), },
+}
+
+
 
 const links: Array<Link | LinkMenu> =
     [
@@ -103,14 +113,8 @@ const links: Array<Link | LinkMenu> =
                     en: { text: 'Contact', href: '#', },
                     de: { text: 'Kontact', href: '#', }
                 },
-                {
-                    en: { text: 'Terms', href: getPermalink('/terms'), },
-                    de: { text: 'Nutzungsbedingungen', href: getPermalink('/terms'), },
-                },
-                {
-                    en: { text: 'Privacy policy', href: getPermalink('/privacy') },
-                    de: { text: 'Privacy policy', href: getPermalink('/privacy'), },
-                }
+                terms,
+                privacy_policy
             ],
         },
         {
@@ -236,20 +240,20 @@ export const footerNavigation: FooterNavigation = {
     secondaryLinks: {
         en: 'HIER',
         links: [
-            { en: { text: 'Terms', href: getPermalink('/terms') }, },
-            { en: { text: 'Privacy Policy', href: getPermalink('/privacy') }, },
+            terms,
+            privacy_policy
         ],
     },
-    socialLinks:
-        [
-            { icon: 'tabler:brand-twitter', link: { en: { text: 'Twitter', href: '#' }, }, },
-            { icon: 'tabler:brand-instagram', link: { en: { text: 'Instagram', href: '#' }, }, },
-            { icon: 'tabler:brand-facebook', link: { en: { text: 'Facebook', href: '#' }, }, },
-            { icon: 'tabler:rss', link: { en: { text: 'RSS', href: getAsset('/rss.xml') }, }, },
-            { icon: 'tabler:brand-github', link: { en: { text: 'Github', href: 'https://github.com/onwidget/astrowind' }, }, },
-        ],
+
+    socialLinks: [
+        { icon: 'tabler:brand-twitter', link: { en: { text: 'Twitter', href: '#' }, }, },
+        { icon: 'tabler:brand-instagram', link: { en: { text: 'Instagram', href: '#' }, }, },
+        { icon: 'tabler:brand-facebook', link: { en: { text: 'Facebook', href: '#' }, }, },
+        { icon: 'tabler:rss', link: { en: { text: 'RSS', href: getAsset('/rss.xml') }, }, },
+        { icon: 'tabler:brand-github', link: { en: { text: 'Github', href: 'https://github.com/onwidget/astrowind' }, }, },
+    ],
     footNote: `
-        <span class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 float-left rounded-sm bg-[url(https://onwidget.com/favicon/favicon-32x32.png)]"></span>
-        Made by <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://onwidget.com/"> onWidget</a> · All rights reserved.
+        <span class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 float-left rounded-sm bg-[url(https://astro.build/favicon.svg)]"></span>
+        Made with <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://astro.build/"> Astro</a> · All rights reserved.
       `,
 };

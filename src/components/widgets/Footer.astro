@@ -2,29 +2,18 @@
 import { Icon } from 'astro-icon';
 import { SITE } from '~/config.mjs';
 import { getLangFromUrl } from '~/utils/i18n/i18n_utils';
+import { defaultLang, FooterNavigation } from '~/utils/i18n/translations';
 import { getHomePermalink } from '~/utils/permalinks';
 
-interface Link {
-  text?: string;
-  href?: string;
-  ariaLabel?: string;
-  icon?: string;
-}
-
-interface Links {
-  text?: string;
-  links: Array<Link>;
-}
-
 export interface Props {
-  links: Array<Links>;
-  secondaryLinks: Array<Link>;
-  socialLinks: Array<Link>;
-  footNote?: string;
+  footerNavigation: FooterNavigation;
   theme?: string;
 }
+
+const { footerNavigation, theme = 'light' } = Astro.props;
+const { links = [], secondaryLinks = undefined, socialLinks = [], footNote = '' } = footerNavigation;
+
 const lang = getLangFromUrl(Astro.url);
-const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme = 'light' } = Astro.props;
 ---
 
 <footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-gray-200 dark:border-slate-800']}>
@@ -37,30 +26,33 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
         </div>
         <div class="text-muted text-sm">
           {
-            secondaryLinks.map(({ text, href }) => (
+            // (secondaryLinks[lang]??=secondaryLinks[defaultLang]).map(( link ) => (
+            secondaryLinks?.links.map((link) => (
               <a
                 class="text-muted mr-2 transition duration-150 ease-in-out hover:text-gray-700 hover:underline dark:text-gray-400"
-                href={href}
-                set:html={text}
+                href={(link[lang] ??= link[defaultLang]).href}
+                set:html={(link[lang] ??= link[defaultLang]).text}
               />
             ))
           }
+          {console.log(`Writing secondary links ! ${secondaryLinks}`)}
+          {console.debug(Astro.props)}
         </div>
       </div>
       {
-        links.map(({ text, links }) => (
+        links.map((linkMenu) => (
           <div class="col-span-6 md:col-span-3 lg:col-span-2">
-            <div class="mb-2 font-medium dark:text-gray-300">{text}</div>
+            <div class="mb-2 font-medium dark:text-gray-300">{(linkMenu[lang] ??= linkMenu[defaultLang])}</div>
             {links && Array.isArray(links) && links.length > 0 && (
               <ul class="text-sm">
-                {links.map(({ text, href, ariaLabel }) => (
+                {linkMenu.links.map((link) => (
                   <li class="mb-2">
                     <a
                       class="text-muted transition duration-150 ease-in-out hover:text-gray-700 hover:underline dark:text-gray-400"
-                      href={href}
-                      aria-label={ariaLabel}
+                      href={(link[lang] ??= link[defaultLang]).href}
+                      aria-label={(link[lang] ??= link[defaultLang]).text}
                     >
-                      <Fragment set:html={text} />
+                      <Fragment set:html={(link[lang] ??= link[defaultLang]).text} />
                     </a>
                   </li>
                 ))}
@@ -74,15 +66,15 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
       {
         socialLinks?.length ? (
           <ul class="-ml-2 mb-4 flex md:order-1 md:mb-0 md:ml-4">
-            {socialLinks.map(({ ariaLabel, href, text, icon }) => (
+            {socialLinks.map(({ icon, link }) => (
               <li>
                 <a
                   class="text-muted inline-flex items-center rounded-lg p-2.5 text-sm hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-                  aria-label={ariaLabel}
-                  href={href}
+                  aria-label={(link[lang] ??= link[defaultLang]).text}
+                  href={(link[lang] ??= link[defaultLang]).href}
                 >
                   {icon && <Icon name={icon} class="h-5 w-5" />}
-                  <Fragment set:html={text} />
+                  <Fragment set:html={(link[lang] ??= link[defaultLang]).text} />
                 </a>
               </li>
             ))}

@@ -12,7 +12,7 @@ export function getLangFromUrl(url: URL) {
 //     }
 // }
 export function useTranslations(lang: keyof typeof languages) {
-    return function t(key: keyof typeof languages) {
+    return function t(key: keyof typeof ui) {
         return ui[key][lang] || ui[key][defaultLang];
     }
 }

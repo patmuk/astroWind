@@ -10,9 +10,8 @@ import LanguagePicker from './LanguagePicker.astro';
 import { getLangFromUrl } from '~/utils/i18n/i18n_utils';
 import { defaultLang, Link, LinkMenu, isLinkMenu, ActionLink, ActionType } from '~/utils/i18n/translations';
 
-
-export interface Props {
-  links?: Array<LinkMenu|Link>;
+interface Props {
+  links?: Array<LinkMenu | Link>;
   actions?: Array<ActionLink>;
   isSticky?: boolean;
   showToggleTheme?: boolean;
@@ -30,7 +29,6 @@ const {
 } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
-
 ---
 
 <header
@@ -61,20 +59,22 @@ const lang = getLangFromUrl(Astro.url);
     >
       <ul class="flex w-full flex-col pt-8 text-xl md:w-auto md:flex-row md:self-center md:pt-0 md:text-base">
         {
-          links.map( ( link ) => (
+          links.map((link) => (
             <li class={isLinkMenu(link) ? 'dropdown' : ''}>
-              {isLinkMenu(link) ?  (
+              {isLinkMenu(link) ? (
                 <>
                   <button class="flex items-center px-4 py-3 font-medium transition duration-150 ease-in-out hover:text-gray-900 dark:hover:text-white">
-                    {link[lang]??=link[defaultLang]} <Icon name="tabler:chevron-down" class="ml-0.5 hidden h-3.5 w-3.5 md:inline" />
+                    {(link[lang] ??= link[defaultLang])}{' '}
+                    <Icon name="tabler:chevron-down" class="ml-0.5 hidden h-3.5 w-3.5 md:inline" />
                   </button>
                   <ul class="dropdown-menu dark:md:bg-dark rounded pl-4 font-medium drop-shadow-xl md:absolute md:hidden md:min-w-[200px] md:bg-white/90 md:pl-0 md:backdrop-blur-md">
-                    {link.links.map(( link ) => (
+                    {link.links.map((link) => (
                       <li>
                         <a
                           class="whitespace-no-wrap block px-5 py-2 first:rounded-t last:rounded-b dark:hover:bg-gray-700 md:hover:bg-gray-200"
-                          href={(link[lang] ??=link[defaultLang]).href}>
-                          {(link[lang] ??=link[defaultLang]).text}
+                          href={(link[lang] ??= link[defaultLang]).href}
+                        >
+                          {(link[lang] ??= link[defaultLang]).text}
                         </a>
                       </li>
                     ))}
@@ -83,8 +83,10 @@ const lang = getLangFromUrl(Astro.url);
               ) : (
                 <a
                   class="flex items-center px-4 py-3 font-medium transition duration-150 ease-in-out hover:text-gray-900 dark:hover:text-white"
-                  href={(link[lang] ??= link[defaultLang]).href}>
-                  {(link[lang] ??=link[defaultLang]).text}</a>
+                  href={(link[lang] ??= link[defaultLang]).href}
+                >
+                  {(link[lang] ??= link[defaultLang]).text}
+                </a>
               )}
             </li>
           ))
@@ -113,11 +115,14 @@ const lang = getLangFromUrl(Astro.url);
                 <a
                   class:list={[
                     'btn ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm',
-                    { 'btn-ghost': action === ActionType.GhostButton, 'btn-primary': action === ActionType.PrimaryButton },
+                    {
+                      'btn-ghost': action === ActionType.GhostButton,
+                      'btn-primary': action === ActionType.PrimaryButton,
+                    },
                   ]}
-                  href={(link[lang] ??=link[defaultLang]).href}
+                  href={(link[lang] ??= link[defaultLang]).href}
                 >
-                  <Fragment set:html={(link[lang] ??=link[defaultLang]).text} />
+                  <Fragment set:html={(link[lang] ??= link[defaultLang]).text} />
                 </a>
               ))}
             </span>

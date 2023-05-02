@@ -1,10 +1,12 @@
 import { getPermalink, getBlogPermalink, getAsset } from "../permalinks";
 
+
 export const languages = {
     en: { label: 'English', icon: 'cif:gb' },
     de: { label: 'Deutsch', icon: 'cif:de' },
 };
 
+export const supportedLanguages = () => Object.keys(languages);
 
 export const defaultLang = 'en';
 

@@ -5,11 +5,10 @@ import { getLangFromUrl, useTranslations } from '~/utils/i18n/i18n_utils';
 
 const title = `Error 404`;
 
-import { languages } from '~/utils/i18n/translations';
+import { supportedLanguages } from '~/utils/i18n/translations';
 
 export async function getStaticPaths() {
-  const langs = Object.keys(languages);
-  return langs.map((lang) => ({ params: { lang } }));
+  return supportedLanguages().map((lang) => ({ params: { lang } }));
 }
 
 const language = getLangFromUrl(Astro.url);

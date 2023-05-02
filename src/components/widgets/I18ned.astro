@@ -1,0 +1,22 @@
+---
+import { supportedLanguages } from '~/utils/i18n/translations';
+import { getLangFromUrl } from '~/utils/i18n/i18n_utils';
+
+// const selectedLang = getLangFromUrl(Astro.URL);
+const { language } = Astro.props;
+
+interface Props {
+  language: string;
+}
+
+import { Debug } from 'astro/components';
+
+const debugLang = {
+  astroParams: Astro.params,
+  lang: language,
+};
+---
+
+<Debug {debugLang} />
+{language}
+{language == 'en' && <slot />}

@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon';
 import { Picture } from '@astrojs/image/components';
+import I18ned from '~/components/widgets/I18ned.astro';
 
 import PostTags from '~/components/blog/Tags.astro';
 import SocialShare from '~/components/common/SocialShare.astro';
@@ -9,6 +10,7 @@ import { getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/utils';
 
 import type { Post } from '~/types';
+import { languages } from '~/utils/i18n/translations';
 
 interface Props {
   post: Post;
@@ -79,8 +81,11 @@ const { post, url } = Astro.props;
       {
         post.Content ? (
           <>
-            {/* @ts-ignore */}
-            <post.Content />
+          {/* @ts-ignore */}
+          <I18ned {'de'}>
+            post.Content
+            </I18ned> (
+            <!-- post.Content /-->
           </>
         ) : (
           <Fragment set:html={post.content} />

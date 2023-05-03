@@ -1,6 +1,5 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import type { Post } from '~/types';
 import { cleanSlug, trimSlash, POST_PERMALINK_PATTERN } from './permalinks';
 
 const generatePermalink = async ({ id, slug, publishDate, category }) => {
@@ -27,6 +26,32 @@ const generatePermalink = async ({ id, slug, publishDate, category }) => {
     .filter((el) => !!el)
     .join('/');
 };
+
+interface Post {
+  id: string;
+  slug: string;
+
+  publishDate: Date;
+  title: string;
+  description?: string;
+
+  image?: string;
+
+  canonical?: string | URL;
+  permalink?: string;
+
+  published?: boolean;
+
+  excerpt?: string;
+  category?: string;
+  tags?: Array<string>;
+  author?: string;
+
+  Content: unknown;
+  content?: string;
+
+  readingTime?: number;
+}
 
 const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> => {
   const { id, slug: rawSlug = '', data } = post;

@@ -27,29 +27,3 @@ const post = defineCollection({
 export const collections = {
   post: post,
 };
-
-export interface Post {
-  id: string;
-  slug: string;
-
-  publishDate: Date;
-  title: string;
-  description?: string;
-
-  image?: string;
-
-  canonical?: string | URL;
-  permalink?: string;
-
-  published?: boolean;
-
-  excerpt?: string;
-  category?: string;
-  tags?: Array<string>;
-  author?: string;
-
-  Content: unknown;
-  content?: string;
-
-  readingTime?: number;
-}

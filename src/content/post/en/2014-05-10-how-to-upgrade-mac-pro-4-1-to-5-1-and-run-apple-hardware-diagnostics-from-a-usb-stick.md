@@ -1,6 +1,6 @@
 ---
-title: How to upgrade Mac Pro 4.1 to 5.1 and run Apple's Hardware Tests from a USB
-stick
+title: "How to upgrade Mac Pro 4.1 to 5.1 and run Apple's Hardware Tests from a USB
+stick"
 publishDate: 2014-05-10 14:19:30.000000000 +02:00
 published: true
 categories: []
@@ -14,8 +14,9 @@ author:
 excerpt: "I recently decided against building my own server from ordered parts and simply bought an older Mac Pro for
   a good value. It was roughly 200€ more than the build-it-yourself way, but therefor it can run OS X smoothly, which
   saves me time where I don't need to babysit my machine.
-</p>
-<p>Nevertheless, it can not go without a bit of hacking.<br />
+
+Nevertheless, it can not go without a bit of hacking.
+
   Read on how to upgrade to 5.1 and run Apple's Hardware Tests from an USB Stick:"
 ---
 I recently decided against building my own server from ordered parts and simply bought an older Mac Pro for

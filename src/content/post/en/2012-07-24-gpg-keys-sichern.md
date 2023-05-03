@@ -6,7 +6,7 @@ categories:
 - pgp
 tags: []
 author:
-email: patrick.mukherjee@gmail.com
+  email: patrick.mukherjee@gmail.com
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'

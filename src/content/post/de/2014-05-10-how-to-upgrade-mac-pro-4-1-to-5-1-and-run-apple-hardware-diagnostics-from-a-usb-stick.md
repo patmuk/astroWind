@@ -1,6 +1,6 @@
 ---
-title: How to upgrade Mac Pro 4.1 to 5.1 and run Apple's Hardware Tests from a USB
-stick
+title: "How to upgrade Mac Pro 4.1 to 5.1 and run Apple's Hardware Tests from a USB
+stick"
 publishDate: 2014-05-10 14:19:30.000000000 +02:00
 published: true
 categories: []

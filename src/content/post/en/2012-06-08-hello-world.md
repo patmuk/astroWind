@@ -12,6 +12,6 @@ author:
   first_name: 'Patrick'
   last_name: 'Mukherjee'
   titel: 'Dr.-Ing.'
-excerpt: "Dies ist ein erster Testeintrag."
+excerpt: "The is a test post."
 ---
-<p><!--:de-->Das ist ein Probeeintrag.<!--:--><!--:en-->The is a test post.<!--:--></p>
+The is a test post.

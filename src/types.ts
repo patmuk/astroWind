@@ -11,7 +11,7 @@ export interface Post {
   canonical?: string | URL;
   permalink?: string;
 
-  draft?: boolean;
+  published?: boolean;
 
   excerpt?: string;
   category?: string;

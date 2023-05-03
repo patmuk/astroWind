@@ -9,7 +9,7 @@ const post = defineCollection({
     canonical: z.string().url().optional(),
 
     publishDate: z.date().or(z.string()).optional(),
-    draft: z.boolean().optional(),
+    published: z.boolean().optional(),
 
     excerpt: z.string().optional(),
     category: z.string().optional(),

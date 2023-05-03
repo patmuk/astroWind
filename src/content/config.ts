@@ -18,8 +18,8 @@ const post = defineCollection({
       email: z.string().email().optional(),
       display_name: z.string().optional(),
       first_name: z.string().optional(),
-      last_name: z.string().optional(),
-      titel: z.string().optional(),
+      last_name: z.string().optional().default('Anonymous'),
+      title: z.string().optional(),
     }),
   }),
 });

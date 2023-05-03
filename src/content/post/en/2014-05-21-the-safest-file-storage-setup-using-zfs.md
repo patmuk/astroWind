@@ -11,7 +11,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 excerpt: "I recently set up a file storage with the purpose of being super safe.<br />
   Here is what one needs to do and why:"
 

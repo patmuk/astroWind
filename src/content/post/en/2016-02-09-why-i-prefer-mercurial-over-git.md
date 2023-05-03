@@ -9,7 +9,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 excerpt: "... it has been a while since I posted last time ... and now basically just a post about some links
   is following ;)</p>
 <p>When I am asked why I prefer Mercurial over git I did not have a real strong argument.<br />

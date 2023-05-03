@@ -10,7 +10,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 ---
 When using the query-mode (the language is noted as an attached '?lang=en' in the URL) a performed search shows the results in the default language (which could be the one selected in the browser settings, not the one chosen by a user).
 The Solution:<br />

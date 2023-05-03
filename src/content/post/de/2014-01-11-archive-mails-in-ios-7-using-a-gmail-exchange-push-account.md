@@ -9,7 +9,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 excerpt: "Der 'Löschen' Knopf hat unter iOS 7 ein anderes Verhalten: Er verschiebt die meine GMails in den
   'Papierkorb', statt sie zu archivieren.
   So kann man das beheben:" 

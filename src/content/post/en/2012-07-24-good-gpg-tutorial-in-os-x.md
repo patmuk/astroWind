@@ -11,7 +11,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 ---
 <p>http://www.robertsosinski.com/2008/02/18/working-with-pgp-and-mac-os-x/</p>
 <p>Old, but still valid. Though now there is a GUI (in the installer https://www.gpgtools.org/installer/index.html) this

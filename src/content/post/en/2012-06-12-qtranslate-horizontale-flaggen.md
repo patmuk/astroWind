@@ -11,7 +11,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 exerpt: 'The language-choise flags can be presented in a nicer way, with horizontally aligned flags:<br />
 ! update from 2/4/2014 !<br />
 It is best to first <a href="http://codex.wordpress.org/Child_Themes" title="how to create a child theme">create a "Child Theme"</a>.<br />

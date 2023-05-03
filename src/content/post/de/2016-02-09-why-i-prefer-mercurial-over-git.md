@@ -9,7 +9,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 excerpt: " ... es ist schon lange her, dass ich etwas gepostet habe ... und dann kommt jetzt auch nur ein kurzer Post ;)
 <p>Wenn ich danach gefragt werde, warum ich Mercurial bevorzuge hatte ich bisher kein starkes Argument parat."
 ---

@@ -10,7 +10,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 excerpt: " The difference is single dispatch vs polymorphic dispatch. This theoretical concept becomes more
   clear with a comprehensive example:"
 ---

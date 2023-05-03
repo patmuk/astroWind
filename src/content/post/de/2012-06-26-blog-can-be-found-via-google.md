@@ -9,7 +9,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 ---
 <p>Vor 18 Tagen habe ich diesen Blog ins Leben gerufen. Heute wurde ich durch Google informiert, dass der Blog
   gecrawlt wurde, also durch Google auffindbar ist. Ohne jegliche Bitte um Einbindung.<br />

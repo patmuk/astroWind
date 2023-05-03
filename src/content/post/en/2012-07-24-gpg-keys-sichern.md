@@ -10,7 +10,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 ---
   I (re-)created gpg-keys.<br />
   Here my recommended steps:<br />

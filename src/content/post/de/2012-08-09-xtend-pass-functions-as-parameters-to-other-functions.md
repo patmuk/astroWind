@@ -11,7 +11,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 excerpt: "Alles in xtend ist eine <em>Expression</em>. Dadurch ist es möglich eine Methode einer anderen Methode als
   Parameter zu übergeben, wie hier beschrieben:"
 ---

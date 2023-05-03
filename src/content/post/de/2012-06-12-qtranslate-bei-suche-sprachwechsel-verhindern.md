@@ -10,7 +10,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 ---
 Nutzt man den Query-Modus (die Sprache wird mit '?lang=de' ausgewählt) springt bei jeder Such die Webseite auf die Standardsprache (z.B.: nach Browser-Einstellungen) um.<br />
 Abhilfe:<br />

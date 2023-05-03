@@ -10,7 +10,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 excerpt: "I recently decided against building my own server from ordered parts and simply bought an older Mac Pro for
   a good value. It was roughly 200€ more than the build-it-yourself way, but therefor it can run OS X smoothly, which
   saves me time where I don't need to babysit my machine.

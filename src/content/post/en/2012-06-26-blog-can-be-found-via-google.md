@@ -9,7 +9,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 ---
 18 days ago I
   started this blog. Today Google notified me that my Blog has been crawled and can be found via a google search.

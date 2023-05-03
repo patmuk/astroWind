@@ -10,7 +10,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 excerpt: "Vor kurzem habe ich mich gegen einen selbstgebauten Server und für einen älteren Mac Pro entschieden. Das
   kostete mich zwar ca. 200€ mehr, aber dafür kann ich OS X nutzen, dass weniger Zeit zum Babysitten verschlingt.</p>
 <p>Aber ohne ein wenig hacken bin ich natürlich nicht ausgekommen ;)<br />

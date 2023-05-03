@@ -10,7 +10,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 excerpt: 'Falls man nicht <a href="http://patrick.mukherjee.de/?page_id=31">PlatinVC</a> nutzen will/kann, man, noch
   viel schlimmer, einen Subversion-Server benutzen muss, kann man trotzdem mercurial lokal mit all seinen Vorteilen
   nutzen. Änderungen können erst lokal eingecheckt werden und dann global zum Subversionserver gepuscht werden. Aus der

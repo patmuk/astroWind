@@ -11,7 +11,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 excerpt: 'Die Sprachenauswahl kann man auch schöner, mit horizontalen Flaggen anzeigen lassen.
 <p>Zuerst erstellt man am besten ein "<a href="http://codex.wordpress.org/Child_Themes" title="how to create a child theme" target="_blank">Child Theme</a>".
 Dann einfach folgendes zur Style.css hinzufügen (unter Design -> Editor):'

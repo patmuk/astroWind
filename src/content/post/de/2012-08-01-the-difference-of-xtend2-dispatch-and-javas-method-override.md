@@ -10,7 +10,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 exerpt: "Theoretisch gesprochen liegt der Unterschied darin, dass Javas Methoden-Überladung ein 'single dispatch'
   und xtends 'dispatch' ein 'polymorphisches dispatch' ist. Diese theoretische Aussage wird am Beispiel viel
   klarer:"

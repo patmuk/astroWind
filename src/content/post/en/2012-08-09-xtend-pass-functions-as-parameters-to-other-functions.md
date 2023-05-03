@@ -11,7 +11,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 excerpt: " In xtend everything is an <em>expression</em>. Thus you can pass a method to another method as a
   parameter in the following way:"
 ---

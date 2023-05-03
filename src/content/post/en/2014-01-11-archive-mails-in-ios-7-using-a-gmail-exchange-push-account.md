@@ -9,7 +9,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 excerpt: "The behavior of the <em>delete button</em> changed in iOS 7: It no longer archives gmails but moves
   them to trash.<br />
   Follow this to restore the old behavior:"

@@ -10,7 +10,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 excerpt: "If you happen to be on a linux box without root privileges you can nevertheless install the two very usefull
   distributed version control systems, git and mercurial:"
 ---

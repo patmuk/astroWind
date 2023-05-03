@@ -10,7 +10,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 ---
 If I open a post using the theme 'Twenty Eleven' no sidebar is shown.<br />
   So the 'qTranslate choose language'-widged is not shown either.<br />

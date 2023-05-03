@@ -27,7 +27,7 @@ const generatePermalink = async ({ id, slug, publishDate, category }) => {
     .join('/');
 };
 
-interface Post {
+export interface Post {
   id: string;
   slug: string;
 
@@ -60,7 +60,7 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
   const {
     tags: rawTags = [],
     category: rawCategory,
-    author = 'Anonymous',
+    author,
     publishDate: rawPublishDate = new Date(),
     ...rest
   } = data;
@@ -77,7 +77,7 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     publishDate: publishDate,
     category: category,
     tags: tags,
-    author: author,
+    author: `${author.title ?? ''} ${author.first_name ?? ''} ${author.last_name ?? ''}`,
 
     ...rest,
 

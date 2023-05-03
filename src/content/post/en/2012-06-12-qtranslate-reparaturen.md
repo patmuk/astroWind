@@ -10,7 +10,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 ---
 <p>I use qTranslate to multilingualize my posts.</p>
 <p>Saidly installing it overwrote some translations that have been working before. For example, "Hinterlasse eine

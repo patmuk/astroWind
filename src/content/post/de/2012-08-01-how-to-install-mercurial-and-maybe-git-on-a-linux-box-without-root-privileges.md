@@ -10,7 +10,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 excerpt: "<p>Falls man auf einer Linux-Maschine ohne root-Rechte nicht auf mercurial (oder git) verzichten will kann man
   diesen Anweisungen folgen:<br />
   <br />

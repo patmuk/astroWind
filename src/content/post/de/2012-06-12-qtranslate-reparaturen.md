@@ -10,7 +10,7 @@ author:
   display_name: patmuk
   first_name: 'Patrick'
   last_name: 'Mukherjee'
-  titel: 'Dr.-Ing.'
+  title: 'Dr.-Ing.'
 ---
 <p>Zur Übersetzung der Posts verwende ich qTranslate.</p>
 <p>Leider hat dies die Übersetzungen einiger der Theme-Elemente, wie "Hinterlasse eine Antwort" statt "leave a reply"

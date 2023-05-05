@@ -30,9 +30,9 @@ export const TAG_BASE = cleanSlug(BLOG?.tag?.pathname) || 'tag';
 export const getCanonical = (path = ''): string | URL => {
   const url = String(new URL(path, SITE.origin));
   if (SITE.trailingSlash == false && path && url.endsWith('/')) {
-    return url.slice(0,-1)
+    return url.slice(0, -1)
   }
-  else if (SITE.trailingSlash == true && path && !url.endsWith('/') ) {
+  else if (SITE.trailingSlash == true && path && !url.endsWith('/')) {
     return url + '/';
   }
   return url;
@@ -65,10 +65,10 @@ export const getPermalink = (slug = '', type = 'page'): string => {
 };
 
 /** */
-export const getHomePermalink = (selectedLanguage:string): string => getPermalink(`/${selectedLanguage}`);
+export const getHomePermalink = (selectedLanguage: string): string => getPermalink(`/${selectedLanguage}`);
 
 /** */
-export const getBlogPermalink = (): string => getPermalink(BLOG_BASE);
+export const getBlogPermalink = (selectedLanguage: string): string => getPermalink(`/${selectedLanguage}/${BLOG_BASE}`);
 
 /** */
 export const getAsset = (path: string): string =>

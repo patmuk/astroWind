@@ -135,7 +135,9 @@ const links: Array<Link | LinkMenu> =
         },
         {
             en:
-                { text: 'Blog', href: getBlogPermalink(), },
+                { text: 'Blog', href: getBlogPermalink('en'), },
+            de:
+                { text: 'Blog', href: getBlogPermalink('de'), },
         },
         {
             en: { text: 'direct link', href: '#', },

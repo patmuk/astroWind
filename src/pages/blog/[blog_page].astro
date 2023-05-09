@@ -13,7 +13,7 @@ export async function getStaticPaths() {
   if (BLOG?.disabled || BLOG?.post?.disabled) return [];
   return (await fetchPosts()).map((post) => ({
     params: {
-      blog: post.permalink,
+      blog_page: post.permalink,
     },
     props: { post },
   }));
@@ -33,6 +33,7 @@ const meta = {
 ---
 
 <Layout {meta}>
+  this is a single's blog page
   <SinglePost post={{ ...post, image: meta.image }} url={url} />
   <ToBlogLink />
 </Layout>

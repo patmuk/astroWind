@@ -8,13 +8,22 @@ import Pagination from '~/components/blog/Pagination.astro';
 
 import { fetchPosts } from '~/utils/blog';
 import { BLOG_BASE } from '~/utils/permalinks';
-// let BLOG_BASE = 'blog'
+
+import { supportedLanguages } from '~/utils/i18n/translations';
+
 export async function getStaticPaths({ paginate }) {
   if (BLOG?.disabled || BLOG?.list?.disabled) return [];
-  return paginate(await fetchPosts(), {
-    params: { page: BLOG_BASE || undefined },
-    pageSize: BLOG.postsPerPage,
+
+  const langs = supportedLanguages();
+  const pathPromises = langs.map(async (lang) => {
+    const posts = await fetchPosts(lang);
+    return paginate(posts, {
+      params: { lang: lang, blog: BLOG_BASE },
+      pageSize: BLOG.postsPerPage,
+    });
   });
+  const paths = await Promise.all(pathPromises);
+  return paths.flat();
 }
 
 const { page } = Astro.props;
@@ -29,8 +38,7 @@ const meta = {
 ---
 
 <Layout {meta}>
-  this is the overview
-  <section class="mx-auto max-w-4xl px-6 py-12 sm:px-6 sm:py-16 lg:py-20">
+  this is the overview<section class="mx-auto max-w-4xl px-6 py-12 sm:px-6 sm:py-16 lg:py-20">
     <Headline
       subtitle="A statically generated blog example with news, tutorials, resources and other interesting content related to AstroWind"
     >
@@ -39,4 +47,4 @@ const meta = {
     <BlogList posts={page.data} />
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
   </section>
-</Layout>
+</Layout>---

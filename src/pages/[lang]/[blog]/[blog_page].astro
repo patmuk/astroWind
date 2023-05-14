@@ -1,5 +1,6 @@
 ---
 import { BLOG } from '~/config.mjs';
+import { BLOG_BASE } from '~/utils/permalinks';
 
 import Layout from '~/layouts/PageLayout.astro';
 import SinglePost from '~/components/blog/SinglePost.astro';
@@ -11,12 +12,20 @@ import { findImage } from '~/utils/images';
 
 export async function getStaticPaths() {
   if (BLOG?.disabled || BLOG?.post?.disabled) return [];
-  return (await fetchPosts()).map((post) => ({
-    params: {
-      blog_page: post.permalink,
-    },
-    props: { post },
-  }));
+
+  const posts = await fetchPosts();
+  const paths = posts.map((post) => {
+    const [lang, blog_page] = post.permalink!.split('/');
+    return {
+      params: {
+        lang: lang,
+        blog: BLOG_BASE,
+        blog_page: blog_page,
+      },
+      props: { post },
+    };
+  });
+  return paths;
 }
 
 const { post } = Astro.props;

@@ -1,6 +1,7 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { cleanSlug, trimSlash, POST_PERMALINK_PATTERN } from './permalinks';
+import { languages } from './i18n/translations';
 
 const generatePermalink = async ({ id, slug, publishDate, category }) => {
   const year = String(publishDate.getFullYear()).padStart(4, '0');
@@ -30,6 +31,7 @@ const generatePermalink = async ({ id, slug, publishDate, category }) => {
 export interface Post {
   id: string;
   slug: string;
+  languageCode: string;
 
   publishDate: Date;
   title: string;
@@ -65,7 +67,8 @@ const getNormalizedPost = async (post: CollectionEntry<'blog'>): Promise<Post> =
     ...rest
   } = data;
 
-  const slug = cleanSlug(rawSlug.split('/').pop());
+  const slug = cleanSlug(rawSlug);
+  const languageCode = slug.split('/')[0];
   const publishDate = new Date(rawPublishDate);
   const category = rawCategory ? cleanSlug(rawCategory) : undefined;
   const tags = rawTags.map((tag: string) => cleanSlug(tag));
@@ -73,6 +76,7 @@ const getNormalizedPost = async (post: CollectionEntry<'blog'>): Promise<Post> =
   return {
     id: id,
     slug: slug,
+    languageCode: languageCode,
 
     publishDate: publishDate,
     category: category,
@@ -90,13 +94,14 @@ const getNormalizedPost = async (post: CollectionEntry<'blog'>): Promise<Post> =
   };
 };
 
-const load = async function (): Promise<Array<Post>> {
+const load = async function (languageCode?: string): Promise<Array<Post>> {
   const posts = await getCollection('blog');
   const normalizedPosts = posts.map(async (post) => await getNormalizedPost(post));
 
   const results = (await Promise.all(normalizedPosts))
     .sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf())
-    .filter((post) => post.published);
+    .filter((post) => post.published && (!languageCode || post.languageCode === languageCode));
+  // .filter((post) => post.published);
 
   return results;
 };
@@ -104,9 +109,9 @@ const load = async function (): Promise<Array<Post>> {
 let _posts: Array<Post>;
 
 /** */
-export const fetchPosts = async (): Promise<Array<Post>> => {
+export const fetchPosts = async (languageCode: string): Promise<Array<Post>> => {
   if (!_posts) {
-    _posts = await load();
+    _posts = await load(languageCode);
   }
 
   return _posts;

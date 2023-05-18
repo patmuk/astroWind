@@ -109,7 +109,7 @@ const load = async function (languageCode?: string): Promise<Array<Post>> {
 let _posts: Array<Post>;
 
 /** */
-export const fetchPosts = async (languageCode: string): Promise<Array<Post>> => {
+export const fetchPosts = async (languageCode?: string): Promise<Array<Post>> => {
   if (!_posts) {
     _posts = await load(languageCode);
   }
@@ -118,10 +118,10 @@ export const fetchPosts = async (languageCode: string): Promise<Array<Post>> => 
 };
 
 /** */
-export const findPostsBySlugs = async (slugs: Array<string>): Promise<Array<Post>> => {
+export const findPostsBySlugs = async (slugs: Array<string>, languageCode?: string): Promise<Array<Post>> => {
   if (!Array.isArray(slugs)) return [];
 
-  const posts = await fetchPosts();
+  const posts = await fetchPosts(languageCode);
 
   return slugs.reduce(function (r: Array<Post>, slug: string) {
     posts.some(function (post: Post) {
@@ -132,10 +132,10 @@ export const findPostsBySlugs = async (slugs: Array<string>): Promise<Array<Post
 };
 
 /** */
-export const findPostsByIds = async (ids: Array<string>): Promise<Array<Post>> => {
+export const findPostsByIds = async (ids: Array<string>, languageCode?: string): Promise<Array<Post>> => {
   if (!Array.isArray(ids)) return [];
 
-  const posts = await fetchPosts();
+  const posts = await fetchPosts(languageCode);
 
   return ids.reduce(function (r: Array<Post>, id: string) {
     posts.some(function (post: Post) {
@@ -146,9 +146,9 @@ export const findPostsByIds = async (ids: Array<string>): Promise<Array<Post>> =
 };
 
 /** */
-export const findLatestPosts = async ({ count }: { count?: number }): Promise<Array<Post>> => {
+export const findLatestPosts = async ({ count }: { count?: number }, languageCode?: string): Promise<Array<Post>> => {
   const _count = count || 4;
-  const posts = await fetchPosts();
+  const posts = await fetchPosts(languageCode);
 
   return posts ? posts.slice(0, _count) : [];
 };

@@ -10,6 +10,7 @@ import { fetchPosts } from '~/utils/blog';
 import { BLOG_BASE } from '~/utils/permalinks';
 
 import { supportedLanguages } from '~/utils/i18n/translations';
+import { getLangFromUrl, useTranslations } from '~/utils/i18n/i18n_utils';
 
 export async function getStaticPaths({ paginate }) {
   if (BLOG?.disabled || BLOG?.list?.disabled) return [];
@@ -35,6 +36,9 @@ const meta = {
   noindex: BLOG?.list?.noindex || currentPage,
   ogType: 'blog',
 };
+
+const language = getLangFromUrl(Astro.url);
+const t = useTranslations(language);
 ---
 
 <Layout {meta}>
@@ -42,7 +46,7 @@ const meta = {
     <Headline
       subtitle="A statically generated blog example with news, tutorials, resources and other interesting content related to AstroWind"
     >
-      The Blog
+      {t('blog.title')}
     </Headline>
     <BlogList posts={page.data} />
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />

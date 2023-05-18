@@ -44,9 +44,13 @@ export const ui: Translation = {
         en: 'Twitter'
     },
     'index.latest_posts_title': {
-        en: 'Some translated thoughts ...',
+        en: 'Some thoughts ...',
         de: 'Ein paar Gedanken ...'
     },
+    'blog.title' : {
+        en: 'The Blog',
+        de: 'Der Blog'
+    }
 } as const;
 
 

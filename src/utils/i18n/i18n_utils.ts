@@ -17,7 +17,7 @@ export function useTranslations(lang: keyof typeof languages) {
     }
 }
 
-function getPreferredLanguage() {
+function getPreferedLanguage() {
     const supportedLanguages = Object.keys(languages);
     console.log(`supported languages: ${supportedLanguages}`);
     const languageCodes = navigator.languages || [navigator.language];
@@ -61,10 +61,10 @@ export function redirect_to_i18n() {
     let redirect_url;
     // remove trailing '/'
     if (url.pathname == "/") {
-        redirect_url = `${url.origin}/${getPreferredLanguage()}`
+        redirect_url = `${url.origin}/${getPreferedLanguage()}`
     }
     else {
-        redirect_url = `${url.origin}/${getPreferredLanguage()}${url.pathname}`;
+        redirect_url = `${url.origin}/${getPreferedLanguage()}${url.pathname}`;
     }
     console.log(`redirecting to ${redirect_url}`);
     window.location.replace(redirect_url);

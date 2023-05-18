@@ -1,9 +1,9 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { cleanSlug, trimSlash, POST_PERMALINK_PATTERN } from './permalinks';
-import { languages } from './i18n/translations';
+import Title from '@astrojs/mdx/test/fixtures/mdx-escape/src/components/Title.astro';
 
-const generatePermalink = async ({ id, slug, publishDate, category }) => {
+const generatePermalink = async ({ title, id, slug, publishDate, category }) => {
   const year = String(publishDate.getFullYear()).padStart(4, '0');
   const month = String(publishDate.getMonth() + 1).padStart(2, '0');
   const day = String(publishDate.getDate()).padStart(2, '0');
@@ -12,6 +12,7 @@ const generatePermalink = async ({ id, slug, publishDate, category }) => {
   const second = String(publishDate.getSeconds()).padStart(2, '0');
 
   const permalink = POST_PERMALINK_PATTERN.replace('%slug%', slug)
+    .replace('%title%', title)
     .replace('%id%', id)
     .replace('%category%', category || '')
     .replace('%year%', year)
@@ -19,7 +20,20 @@ const generatePermalink = async ({ id, slug, publishDate, category }) => {
     .replace('%day%', day)
     .replace('%hour%', hour)
     .replace('%minute%', minute)
-    .replace('%second%', second);
+    .replace('%second%', second)
+    .replaceAll(' ', '_')
+    .replaceAll('+', '_')
+    .replaceAll('&', '_')
+    .replaceAll('?', '')
+    .replaceAll('#', '')
+    .replaceAll(',', '')
+    .replaceAll('/', '_');
+  // .replaceAll('!', '')
+  // .replaceAll("'", '')
+  // .replaceAll('(', '')
+  // .replaceAll(')', '')
+  // .replaceAll('.', '_')
+  // .replaceAll(':', '');
 
   return permalink
     .split('/')
@@ -64,6 +78,7 @@ const getNormalizedPost = async (post: CollectionEntry<'blog'>): Promise<Post> =
     category: rawCategory,
     author,
     publishDate: rawPublishDate = new Date(),
+    title,
     ...rest
   } = data;
 
@@ -74,6 +89,7 @@ const getNormalizedPost = async (post: CollectionEntry<'blog'>): Promise<Post> =
   const tags = rawTags.map((tag: string) => cleanSlug(tag));
 
   return {
+    title: title,
     id: id,
     slug: slug,
     languageCode: languageCode,
@@ -88,7 +104,7 @@ const getNormalizedPost = async (post: CollectionEntry<'blog'>): Promise<Post> =
     Content: Content,
     // or 'body' in case you consume from API
 
-    permalink: await generatePermalink({ id, slug, publishDate, category }),
+    permalink: await generatePermalink({ title, id, slug, publishDate, category }),
 
     readingTime: remarkPluginFrontmatter?.readingTime,
   };

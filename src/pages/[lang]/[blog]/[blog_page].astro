@@ -15,12 +15,11 @@ export async function getStaticPaths() {
 
   const posts = await fetchPosts();
   const paths = posts.map((post) => {
-    const [lang, blog_page] = post.permalink!.split('/');
     return {
       params: {
-        lang: lang,
+        lang: post.languageCode,
         blog: BLOG_BASE,
-        blog_page: blog_page,
+        blog_page: post.permalink,
       },
       props: { post },
     };

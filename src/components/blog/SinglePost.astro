@@ -23,7 +23,7 @@ const { post, url } = Astro.props;
     <header class={post.image ? '' : ''}>
       <div class="mx-auto mb-2 mt-0 flex max-w-3xl flex-col justify-between px-4 sm:flex-row sm:items-center sm:px-6">
         <p>
-          <Icon name="tabler:clock" class="-mt-0.5 inline-block h-4 w-4 dark:text-gray-400" />
+          <Icon name="tabler-icon-clock" class="-mt-0.5 inline-block h-4 w-4 dark:text-gray-400" />
           <time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time>
           {
             post.category && (

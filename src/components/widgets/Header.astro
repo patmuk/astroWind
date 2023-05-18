@@ -65,7 +65,7 @@ const lang = getLangFromUrl(Astro.url);
                 <>
                   <button class="flex items-center px-4 py-3 font-medium transition duration-150 ease-in-out hover:text-gray-900 dark:hover:text-white">
                     {(link[lang] ??= link[defaultLang])}{' '}
-                    <Icon name="tabler:chevron-down" class="ml-0.5 hidden h-3.5 w-3.5 md:inline" />
+                    <Icon name="tabler-icon-chevron-down" class="ml-0.5 hidden h-3.5 w-3.5 md:inline" />
                   </button>
                   <ul class="dropdown-menu dark:md:bg-dark rounded pl-4 font-medium drop-shadow-xl md:absolute md:hidden md:min-w-[200px] md:bg-white/90 md:pl-0 md:backdrop-blur-md">
                     {link.links.map((link) => (
@@ -104,7 +104,7 @@ const lang = getLangFromUrl(Astro.url);
               aria-label="RSS Feed"
               href={getAsset('/rss.xml')}
             >
-              <Icon name="tabler:rss" class="h-5 w-5" />
+              <Icon name="tabler-icon-rss" class="h-5 w-5" />
             </a>
           )
         }

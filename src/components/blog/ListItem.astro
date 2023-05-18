@@ -45,7 +45,7 @@ const link = !BLOG?.post?.disabled ? post.permalink : '';
     <header>
       <div class="mb-1">
         <span class="text-sm">
-          <Icon name="tabler:clock" class="-mt-0.5 inline-block h-3.5 w-3.5 dark:text-gray-400" />
+          <Icon name="tabler-icon-clock" class="-mt-0.5 inline-block h-3.5 w-3.5 dark:text-gray-400" />
           <time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time>
           {
             post.category && (

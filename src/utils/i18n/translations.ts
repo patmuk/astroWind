@@ -2,8 +2,8 @@ import { getPermalink, getBlogPermalink, getAsset } from "../permalinks";
 
 
 export const languages = {
-    en: { label: 'English', icon: 'cif:gb' },
-    de: { label: 'Deutsch', icon: 'cif:de' },
+    en: { label: 'English', icon: 'cif-icon-gb' },
+    de: { label: 'Deutsch', icon: 'cif-icon-de' },
 };
 
 export const supportedLanguages = () => Object.keys(languages);
@@ -47,7 +47,7 @@ export const ui: Translation = {
         en: 'Some thoughts ...',
         de: 'Ein paar Gedanken ...'
     },
-    'blog.title' : {
+    'blog.title': {
         en: 'The Blog',
         de: 'Der Blog'
     }
@@ -254,11 +254,11 @@ export const footerNavigation: FooterNavigation = {
     },
 
     socialLinks: [
-        { icon: 'tabler:brand-twitter', link: { en: { text: 'Twitter', href: '#' }, }, },
-        { icon: 'tabler:brand-instagram', link: { en: { text: 'Instagram', href: '#' }, }, },
-        { icon: 'tabler:brand-facebook', link: { en: { text: 'Facebook', href: '#' }, }, },
-        { icon: 'tabler:rss', link: { en: { text: 'RSS', href: getAsset('/rss.xml') }, }, },
-        { icon: 'tabler:brand-github', link: { en: { text: 'Github', href: 'https://github.com/onwidget/astrowind' }, }, },
+        { icon: 'tabler-icon-brand-twitter', link: { en: { text: 'Twitter', href: '#' }, }, },
+        { icon: 'tabler-icon-brand-instagram', link: { en: { text: 'Instagram', href: '#' }, }, },
+        { icon: 'tabler-icon-brand-facebook', link: { en: { text: 'Facebook', href: '#' }, }, },
+        { icon: 'mingcute_rss-line', link: { en: { text: 'RSS', href: getAsset('/rss.xml') }, }, },
+        { icon: 'tabler-icon-brand-github', link: { en: { text: 'Github', href: 'https://github.com/onwidget/astrowind' }, }, },
     ],
     footNote: `
         <span class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 float-left rounded-sm bg-[url(https://astro.build/favicon.svg)]"></span>

@@ -3,24 +3,28 @@ import Grid from '~/components/blog/Grid.astro';
 
 import { getBlogPermalink } from '~/utils/permalinks';
 import { findLatestPosts } from '~/utils/blog';
+import { defaultLang } from '~/utils/i18n/translations';
 
 interface Props {
   title?: string;
   allPostsText?: string;
   allPostsLink?: string | URL;
+  language?: string;
   information?: string;
-  postIds: string[];
+  postIds?: string[];
+  count?: number;
 }
 
 const {
   title = await Astro.slots.render('title'),
   allPostsText = 'View all posts',
-  allPostsLink = getBlogPermalink(),
+  language = defaultLang,
+  allPostsLink = getBlogPermalink(language),
   information = await Astro.slots.render('information'),
   count = 4,
 } = Astro.props;
 
-const posts = await findLatestPosts({ count });
+const posts = await findLatestPosts( count, language );
 ---
 
 <section class="mx-auto max-w-7xl px-4 py-16 lg:py-20">

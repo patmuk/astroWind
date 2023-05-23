@@ -110,28 +110,23 @@ const getNormalizedPost = async (post: CollectionEntry<'blog'>): Promise<Post> =
   };
 };
 
-const load = async function (languageCode?: string): Promise<Array<Post>> {
-  const posts = await getCollection('blog');
-  const normalizedPosts = posts.map(async (post) => await getNormalizedPost(post));
+let _posts: Array<Post>;
 
-  const results = (await Promise.all(normalizedPosts))
+export const fetchPosts = async function (languageCode?: string): Promise<Array<Post>> {
+  if (!_posts) {
+    const posts = await getCollection('blog');
+    // const normalizedPosts = posts.map(async (post) => await getNormalizedPost(post));
+    const normalizedPosts = await Promise.all(posts.map(async (post) => await getNormalizedPost(post)));
+    _posts = normalizedPosts;
+  }
+
+  const results = (await Promise.all(_posts))
     .sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf())
-    .filter((post) => post.published && (!languageCode || post.languageCode === languageCode));
-  // .filter((post) => post.published);
+    .filter((post) => post.published && (languageCode && post.languageCode === languageCode));
 
   return results;
 };
 
-let _posts: Array<Post>;
-
-/** */
-export const fetchPosts = async (languageCode?: string): Promise<Array<Post>> => {
-  if (!_posts) {
-    _posts = await load(languageCode);
-  }
-
-  return _posts;
-};
 
 /** */
 export const findPostsBySlugs = async (slugs: Array<string>, languageCode?: string): Promise<Array<Post>> => {
@@ -162,9 +157,8 @@ export const findPostsByIds = async (ids: Array<string>, languageCode?: string):
 };
 
 /** */
-export const findLatestPosts = async ({ count }: { count?: number }, languageCode?: string): Promise<Array<Post>> => {
+export const findLatestPosts = async (count?: number, languageCode?: string): Promise<Array<Post>> => {
   const _count = count || 4;
   const posts = await fetchPosts(languageCode);
-
   return posts ? posts.slice(0, _count) : [];
 };

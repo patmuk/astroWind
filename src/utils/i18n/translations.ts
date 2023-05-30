@@ -43,14 +43,33 @@ export const ui: Translation = {
     'nav.twitter': {
         en: 'Twitter'
     },
-    'index.latest_posts_title': {
+    'index.latest_posts.title': {
         en: 'Some thoughts ...',
         de: 'Ein paar Gedanken ...'
+    },
+    'index.latest_posts.information': {
+        en: `In the folowing articles you can find information,
+        which I could not find elsewhere.
+        However, over time the internet becomes content richer - 
+        thus I find lesser and lesser novel things to write about.
+        Many things are not relevant anymore. Nevertheless, I hope there is still something 
+        which helps. Enjoy!`,
+        de: `Folgende Artikel beinhalten Wissen, 
+        welches ich so zusammengetragen nirgends finden konnte.
+        Über die Jahre wird das Internet immer vollständiger, 
+        so dass ich immer seltener etwas neues Schreiben kann.
+        Vieles ist heute nicht mehr relevant. Trotzdem: Viel Spass beim Lesen,
+        ich hoffe es hilft dem ein oder anderem!`
     },
     'blog.title': {
         en: 'The Blog',
         de: 'Der Blog'
-    }
+    },
+    'blog.all_posts': {
+        en: 'View all posts',
+        de: 'Alle Artikel'
+    },
+
 } as const;
 
 

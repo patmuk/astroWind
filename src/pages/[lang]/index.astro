@@ -58,14 +58,7 @@ export async function getStaticPaths() {
 
   <!-- HighlightedPosts Widget ******* -->
 
-  <LatestPosts
-    title={t('index.latest_posts_title')}
-    information={`The blog is used to display AstroWind documentation.
-			Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-			Astro is a very interesting technology. Thanks.
-		`}
-    language={language}
-  />
+  <LatestPosts title={t('index.latest_posts.title')} information={t('index.latest_posts.information')} />
 
   <!-- Note Widget ******************* -->
 

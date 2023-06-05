@@ -44,8 +44,8 @@ export const ui: Translation = {
         en: 'Twitter'
     },
     'index.latest_posts.title': {
-        en: 'Some thoughts ...',
-        de: 'Ein paar Gedanken ...'
+        en: 'Collected knowledge ...',
+        de: 'Gesammeltes Wissen ...'
     },
     'index.latest_posts.information': {
         en: `In the folowing articles you can find information,

@@ -1,13 +1,16 @@
 ---
 import { Icon } from 'astro-icon';
 import { languages } from '~/utils/i18n/translations';
+import { get_i18n_url } from '~/utils/i18n/i18n_utils';
+
+const url = Astro.url;
 ---
 
 <ul style={{ display: 'flex', alignItems: 'center', listStyle: 'none' }}>
   {
     Object.entries(languages).map(([lang, data]) => (
       <li style={{ marginRight: '1rem' }}>
-        <a href={`/${lang}`} style={{ display: 'flex', alignItems: 'center' }}>
+        <a href={get_i18n_url(url, lang as keyof typeof languages)} style={{ display: 'flex', alignItems: 'center' }}>
           <Icon name={data.icon} class="mr-1 inline-block h-5 w-5" />
           <span class="max-lg:hidden">{data.label}</span>
         </a>
